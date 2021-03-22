@@ -1,31 +1,52 @@
-import AddForm from './scr/components/AddForm';
-import List from './scr/components/List';
-import Done from './scr/components/Done';
-import InProgress from './scr/components/InProgress';
-import Abandon from './scr/components/Abandon';
-import '.src/styles/app.css';
+import React, {useState} from 'react'
+import AddForm from './src/components/AddForm';
+import List from './src/components/List';
+import Done from './src/components/Done';
+import InProgress from './src/components/InProgress';
+import Abandon from './src/components/Abandon';
+import './src/styles/app.css';
 
-function App(props) {
+const App = (props) => {
+  const [work, setWork] = useState('')
+  const [list, setList] = useState(props.list)
+  const [inProgress, setInProgress] = useState(props.inProgress)
+  const [abandon, setAbandon] = useState(props.abandon)
+  const [done, setDone] = useState(props.done)  
+
   return (
-    <AddForm 
-      addToList={addToList}
-    />
-    <List 
-      removeFromList={removeFromList}
-      addToInProgress={addToInProgress}
-      list={list}
-    />
-    <InProgress 
-      addToAbandon={addToAbandon}
-      addToDone={addToDone}
-      inProgress={inProgress}
-    />
-    <Abandon 
-      abandon={abandon}
-    />
-    <Done 
-      done={done}
-    />    
+    <div className='todo-container'>
+      <AddForm 
+        addToList={props.addToList}
+        work={work}
+        setWork={setWork}        
+        list={list}
+        setList={setList}
+      />
+      <List 
+        removeFromList={props.removeFromList}
+        addToInProgress={props.addToInProgress}
+        inProgress={inProgress}
+        setInProgress={setInProgress}
+        list={list}
+        setList={setList}
+      />
+      <InProgress 
+        addToAbandon={props.addToAbandon}
+        addToDone={props.addToDone}
+        done={done}
+        setDone={setDone}
+        abandon={abandon}
+        setAbandon={setAbandon}
+        inProgress={inProgress}
+        setInProgress={setInProgress}
+      />
+      <Abandon 
+        abandon={abandon}
+      />
+      <Done 
+        done={done}
+      />    
+    </div>
   );
 }
 

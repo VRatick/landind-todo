@@ -7,7 +7,7 @@ import {
 } from '../constants/list';
 
 const initialState = {
-  list: ['Doing my homework', 'Clean bathroom', 'Go to shop'],    
+  plan: ['Doing my homework', 'Clean bathroom', 'Go to shop'],    
   inProgress: ['Clean kitchen', 'Go to school'],    
   abandon: ['Playing football'],    
   done: ['Clean my room']    
@@ -17,23 +17,23 @@ export default (state = initialState, action) => {
   switch (action.type) {      
     case ADD_TO_LIST: {
       const { work } = action;
-      const list = state.list;        
-      list.push(work);      
-      return { ...state, list };
+      const plan = state.plan;        
+      plan.push(work);      
+      return { ...state, plan };
     }
     case REMOVE_FROM_LIST: {
       const { listId } = action;
-      const list = state.list;
-      list.splice(listId, 1);    
-      return { ...state, list };
+      const plan = state.plan;
+      plan.splice(listId, 1);    
+      return { ...state, plan };
     }
     case ADD_TO_INPROGRESS: {
         const { listId } = action;
-        const list = state.list;   
+        const plan = state.plan;   
         const inProgress = state.inProgress     
-        const removed = list.splice(listId, 1);
+        const removed = plan.splice(listId, 1);
         inProgress.push(removed)
-        return { ...state, list, inProgress };
+        return { ...state, plan, inProgress };
     } 
     case ADD_TO_ABANDON: {
         const { listId } = action;        

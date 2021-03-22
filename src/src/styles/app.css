@@ -1,0 +1,53 @@
+.input-container, .done-container, .inprogress-container, .abandon-container, .list-container {
+    border: 1px solid black;
+    border-radius: 8px;
+    width: 400px;    
+    margin-top: 100px;
+    padding: 10px 10px 10px 10px;
+}
+
+.input-container {
+    background-color: #007ACC;
+}
+
+.done-container {
+    background-color: #00C42F;
+}
+
+.abandon-container {
+    background-color: #C44444;
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.button-green {
+    color: green;
+    background-color: greenyellow;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 100px;
+}
+
+.button-red {
+    color: white;
+    background-color: red;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 100px;
+}
+
+.input {
+    width: 290px;
+    border-radius: 4px;
+}
+
+.title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 10px;
+}

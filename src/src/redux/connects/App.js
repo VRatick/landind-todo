@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import { addToList, removeFromList, addToInProgress, addToAbandon, addToDone } from '../actions/products';
-import App from '../../App'
+import { addToList, removeFromList, addToInProgress, addToAbandon, addToDone } from '../actions/list';
+import App from '../../../App'
 
-const mapStateToProps = ( state ) => ({
-    list: state.list,
-    inProgress: state.inProgress,    
-    abandon: state.abandon,    
-    done: state.done    
+const mapStateToProps = ( {list} ) => ({
+    list: list.plan,
+    inProgress: list.inProgress,    
+    abandon: list.abandon,    
+    done: list.done    
   });
 
 const mapDispatchToProps = (dispatch) => ({    
