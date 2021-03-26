@@ -10,7 +10,7 @@ const mapStateToProps = ( {list} ) => ({
   });
 
 const mapDispatchToProps = (dispatch) => ({    
-    addToList: (work) => dispatch(addToList(work)),
+    addToList: (task) => dispatch(addToList(task)),
     removeFromList: (listId) => dispatch(removeFromList(listId)),
     addToInProgress: (listId) => dispatch(addToInProgress(listId)),
     addToAbandon: (listId) => dispatch(addToAbandon(listId)),

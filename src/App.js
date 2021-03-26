@@ -1,44 +1,46 @@
 import React, {useState} from 'react'
-import AddForm from './src/components/AddForm';
-import List from './src/components/List';
-import Done from './src/components/Done';
-import InProgress from './src/components/InProgress';
-import Abandon from './src/components/Abandon';
-import './src/styles/app.css';
+import AddForm from './root/components/AddForm';
+import List from './root/components/List';
+import Done from './root/components/Done';
+import InProgress from './root/components/InProgress';
+import Abandon from './root/components/Abandon';
+import './root/styles/app.css';
+import { store } from './root/redux/store' 
 
 const App = (props) => {
-  const [work, setWork] = useState('')
+  const [task, setTask] = useState('')
   const [list, setList] = useState(props.list)
   const [inProgress, setInProgress] = useState(props.inProgress)
   const [abandon, setAbandon] = useState(props.abandon)
-  const [done, setDone] = useState(props.done)  
+  const [done, setDone] = useState(props.done)    
+
+  store.subscribe( () => {
+    setList([...props.list])
+    setInProgress([...props.inProgress])
+    setDone([...props.done])
+    setAbandon([...props.abandon])
+  })
 
   return (
     <div className='todo-container'>
       <AddForm 
         addToList={props.addToList}
-        work={work}
-        setWork={setWork}        
-        list={list}
-        setList={setList}
+        task={task}
+        setTask={setTask}        
+        list={list}        
       />
       <List 
         removeFromList={props.removeFromList}
         addToInProgress={props.addToInProgress}
-        inProgress={inProgress}
-        setInProgress={setInProgress}
-        list={list}
-        setList={setList}
+        inProgress={inProgress}        
+        list={list}        
       />
       <InProgress 
         addToAbandon={props.addToAbandon}
         addToDone={props.addToDone}
-        done={done}
-        setDone={setDone}
-        abandon={abandon}
-        setAbandon={setAbandon}
-        inProgress={inProgress}
-        setInProgress={setInProgress}
+        done={done}        
+        abandon={abandon}        
+        inProgress={inProgress}        
       />
       <Abandon 
         abandon={abandon}

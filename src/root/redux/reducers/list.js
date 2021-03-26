@@ -16,9 +16,9 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {      
     case ADD_TO_LIST: {
-      const { work } = action;
+      const { task } = action;
       const plan = state.plan;        
-      plan.push(work);      
+      plan.push(task);      
       return { ...state, plan };
     }
     case REMOVE_FROM_LIST: {
@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
         const { listId } = action;
         const plan = state.plan;   
         const inProgress = state.inProgress     
-        const removed = plan.splice(listId, 1);
+        const removed = plan.splice(listId, 1).join('');
         inProgress.push(removed)
         return { ...state, plan, inProgress };
     } 
@@ -39,7 +39,7 @@ export default (state = initialState, action) => {
         const { listId } = action;        
         const inProgress = state.inProgress   
         const abandon = state.abandon;     
-        const removed = inProgress.splice(listId, 1);
+        const removed = inProgress.splice(listId, 1).join('');
         abandon.push(removed)
         return { ...state, inProgress, abandon };
     }
@@ -47,7 +47,7 @@ export default (state = initialState, action) => {
         const { listId } = action;        
         const inProgress = state.inProgress   
         const done = state.done;     
-        const removed = inProgress.splice(listId, 1);
+        const removed = inProgress.splice(listId, 1).join('');
         done.push(removed)
         return { ...state, inProgress, done };
     }             

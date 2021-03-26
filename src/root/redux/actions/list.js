@@ -1,8 +1,8 @@
 import * as Constants from '../constants/list';
 
-export const addToList = (work) => ({
+export const addToList = (task) => ({
     type: Constants.ADD_TO_LIST,
-    work
+    task
 });
 
 export const removeFromList = (listId) => ({

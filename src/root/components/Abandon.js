@@ -2,7 +2,7 @@ import React from 'react'
 import text from '../assets/text.json'
 
 const Abandon = ( {abandon} ) => {
-
+    
     const list = abandon.map( (item, index) => {
         return (
             <div  key={index+1}>
